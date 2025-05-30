@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroggo Homeo Pharmacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* WhatsApp light grey background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+        }
+
+        .whatsapp-container {
+            width: 100%;
+            max-width: 600px; /* Max width similar to phone screen */
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners */
+            margin: 20px 10px; /* Add some margin from edges */
+        }
+
+        .whatsapp-header {
+            background-color: #075E54; /* WhatsApp header green */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .whatsapp-header .left-side {
+            display: flex;
+            align-items: center;
+        }
+
+        .whatsapp-header .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white; /* Or your logo background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+
+        .whatsapp-header .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .whatsapp-header .title {
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        /* Tabs like WhatsApp */
+        .whatsapp-tabs {
+            display: flex;
+            background-color: #075E54; /* Same as header */
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            padding: 0 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .whatsapp-tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none; /* Remove underline for links */
+        }
+
+        .whatsapp-tab-item:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-tab-item.active {
+            color: white;
+        }
+
+        .whatsapp-tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .whatsapp-content {
+            padding: 20px;
+            /* Using the provided WhatsApp chat background image, ensure it's in the same folder */
+            background-image: url('Screenshot_20250529-102624_1.jpg'); /* This was the original image for chat background */
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+            overflow-y: auto;
+            color: #333; /* Default text color for content */
+        }
+
+        .whatsapp-message-box {
+            background-color: #DCF8C6; /* Light green message bubble (your message) */
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #333; /* Darker text for readability */
+            text-align: justify;
+        }
+         .whatsapp-message-box p {
+            margin: 0 0 10px 0;
+         }
+         .whatsapp-message-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+         }
+         .whatsapp-message-box ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+         }
+         .whatsapp-message-box ul li::before {
+            content: "\f00c"; /* Checkmark icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #2e7d32; /* Green checkmark */
+            font-size: 0.9em;
+            top: 2px;
+         }
+
+        .whatsapp-feature-section {
+            background-color: #f7f7f7; /* Lighter background for feature list, like WhatsApp's system messages */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        .whatsapp-feature-section h3 {
+            color: #075E54;
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .whatsapp-feature-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .whatsapp-feature-section ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+        }
+        .whatsapp-feature-section ul li::before {
+            content: "\f058"; /* Info circle icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #2196F3; /* Blue icon */
+            font-size: 1.1em;
+            top: 2px;
+        }
+
+        .contact-buttons-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center;
+            gap: 15px; /* Space between buttons */
+            padding: 20px;
+            background-color: #ffffff; /* White background for buttons */
+            border-top: 1px solid #eee;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%; /* Make buttons take more width */
+            max-width: 300px; /* Limit max width */
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            color: white; /* Default text color */
+        }
+
+        .contact-button.call {
+            background-color: #25D366; /* WhatsApp green */
+        }
+
+        .contact-button.call:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+        .contact-button.email {
+            background-color: #075E54; /* Darker green, like header */
+        }
+
+        .contact-button.email:hover {
+            background-color: #054a3e;
+            transform: translateY(-2px);
+        }
+
+        .contact-button.register {
+            background-color: #6C5CE7; /* A pleasant purple for registration */
+        }
+
+        .contact-button.register:hover {
+            background-color: #5444b0;
+            transform: translateY(-2px);
+        }
+
+        .contact-button i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .whatsapp-footer {
+            background-color: #075E54; /* WhatsApp header green */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        .whatsapp-footer i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        .whatsapp-footer .address {
+            margin-top: 5px; /* Space above address if it wraps */
+        }
+
+        /* Responsive adjustments for footer address */
+        @media (max-width: 480px) {
+            .whatsapp-footer {
+                flex-direction: column;
+            }
+            .whatsapp-footer i {
+                margin-bottom: 5px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="whatsapp-container">
+        <div class="whatsapp-header">
+            <div class="left-side">
+                <div class="logo-placeholder">
+                    <img src="20230426_102654-1.png" alt="Aroggo Homeo Pharmacy Logo">
+                </div>
+                <div class="title">Aroggo Homeo Pharmacy</div>
+            </div>
+            </div>
+
+        <div class="whatsapp-tabs">
+            <a href="tel:+8801925174138" class="whatsapp-tab-item active">Call Now</a>
+            <div class="whatsapp-tab-item">About Us</div>
+            <div class="whatsapp-tab-item">Contact</div>
+        </div>
+
+        <div class="whatsapp-content">
+            <div class="whatsapp-message-box">
+                <p>Trusted Homeopathic Care at Affordable Prices</p>
+                <p>Our homeopathic clinic offers expert solutions for complex health issues. Every Sunday, from 10:00 AM to 1:00 PM, an experienced doctor is available for personalized consultations. We provide premium-quality medicines and affordable treatments to ensure your health and well-being. Visit us and experience the care you deserve!</p>
+            </div>
+
+            <div class="whatsapp-feature-section">
+                <h3>Conditions We Treat:</h3>
+                <ul>
+                    <li><strong>Thyroid disorders</strong></li>
+                    <li><strong>Tumors</strong></li>
+                    <li><strong>Cancer</strong></li>
+                    <li>And more.</li>
+                </ul>
+                <h3>Our Commitment:</h3>
+                <ul>
+                    <li><strong>Affordable Prices:</strong> Quality healthcare does not have to come at a high cost.</li>
+                    <li><strong>Premium-Quality Medicines:</strong> We offer authentic and superior homeopathic remedies.</li>
+                    <li><strong>Specialized Treatment:</strong> Tailored care for patients with unique or challenging health conditions.</li>
+                    <li><strong>Patient-Centric Approach:</strong> Every patient receives detailed and personalized consultation.</li>
+                    <li><strong>Trusted Expertise:</strong> Years of experience in handling critical health issues with homeopathic treatment.</li>
+                </ul>
+            </div>
+            </div>
+
+        <div class="contact-buttons-container">
+            <a href="tel:+8801925174138" class="contact-button call">
+                <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="mailto:pharmacyaroggohomeo@gmail.com" class="contact-button email">
+                <i class="fas fa-envelope"></i> Email Us
+            </a>
+            <a href="https://forms.gle/fZYrnuigfAh6Vmxb9" class="contact-button register" target="_blank">
+                <i class="fas fa-user-plus"></i> Register Now
+            </a>
+        </div>
+
+
+        <div class="whatsapp-footer">
+            <i class="fas fa-map-marker-alt"></i> <span class="address">Jalil Plaza, College Road, Sonargaon, Narayanganj</span>
+        </div>
+    </div>
+</body>
+</html>
